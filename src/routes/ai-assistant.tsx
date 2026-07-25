@@ -14,7 +14,7 @@ export const Route = createFileRoute("/ai-assistant")({
       { property: "og:description", content: "An AI tutor that picks the right formula and solves it with you." },
     ],
   }),
-  component: AiAssistant;
+  component: AiAssistant,
 });
 
 type Answer = Awaited<ReturnType<typeof askFormulaAssistant>>;
