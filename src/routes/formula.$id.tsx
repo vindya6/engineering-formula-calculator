@@ -6,18 +6,20 @@ import { useBookmarks } from "@/lib/storage";
 
 export const Route = createFileRoute("/formula/$id")({
   loader: ({ params }) => {
-    const formula = getFormula(params.id);
-    if (!formula) throw notFound();
-    return { formula };
+    if (!getFormula(params.id)) throw notFound();
+    return { id: params.id };
   },
-  head: ({ loaderData }) => ({
-    meta: [
-      { title: loaderData ? `${loaderData.formula.name} — Formula Lab` : "Formula" },
-      { name: "description", content: loaderData?.formula.description ?? "Engineering formula" },
-      { property: "og:title", content: loaderData?.formula.name ?? "Formula" },
-      { property: "og:description", content: loaderData?.formula.description ?? "" },
-    ],
-  }),
+  head: ({ loaderData }) => {
+    const f = loaderData ? getFormula(loaderData.id) : undefined;
+    return {
+      meta: [
+        { title: f ? `${f.name} — Formula Lab` : "Formula" },
+        { name: "description", content: f?.description ?? "Engineering formula" },
+        { property: "og:title", content: f?.name ?? "Formula" },
+        { property: "og:description", content: f?.description ?? "" },
+      ],
+    };
+  },
   component: FormulaPage,
   notFoundComponent: () => (
     <div className="mx-auto max-w-xl p-12 text-center">
@@ -28,11 +30,12 @@ export const Route = createFileRoute("/formula/$id")({
 });
 
 function FormulaPage() {
-  const { formula } = Route.useLoaderData();
+  const { id } = Route.useLoaderData();
+  const formula = getFormula(id)!;
   const subject = getSubject(formula.subject);
   const { has, toggle } = useBookmarks();
   const related = (formula.related ?? [])
-    .map(id => FORMULAS.find(f => f.id === id))
+    .map((rid) => FORMULAS.find((f) => f.id === rid))
     .filter((f): f is (typeof FORMULAS)[number] => !!f);
 
   return (

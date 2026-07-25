@@ -9,38 +9,248 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UnitConverterRouteImport } from './routes/unit-converter'
+import { Route as SubjectsRouteImport } from './routes/subjects'
+import { Route as ScientificCalculatorRouteImport } from './routes/scientific-calculator'
+import { Route as PracticeRouteImport } from './routes/practice'
+import { Route as LibraryRouteImport } from './routes/library'
+import { Route as HistoryRouteImport } from './routes/history'
+import { Route as BookmarksRouteImport } from './routes/bookmarks'
+import { Route as AiAssistantRouteImport } from './routes/ai-assistant'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SubjectSlugRouteImport } from './routes/subject.$slug'
+import { Route as FormulaIdRouteImport } from './routes/formula.$id'
 
+const UnitConverterRoute = UnitConverterRouteImport.update({
+  id: '/unit-converter',
+  path: '/unit-converter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SubjectsRoute = SubjectsRouteImport.update({
+  id: '/subjects',
+  path: '/subjects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScientificCalculatorRoute = ScientificCalculatorRouteImport.update({
+  id: '/scientific-calculator',
+  path: '/scientific-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PracticeRoute = PracticeRouteImport.update({
+  id: '/practice',
+  path: '/practice',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryRoute = LibraryRouteImport.update({
+  id: '/library',
+  path: '/library',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookmarksRoute = BookmarksRouteImport.update({
+  id: '/bookmarks',
+  path: '/bookmarks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiAssistantRoute = AiAssistantRouteImport.update({
+  id: '/ai-assistant',
+  path: '/ai-assistant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SubjectSlugRoute = SubjectSlugRouteImport.update({
+  id: '/subject/$slug',
+  path: '/subject/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FormulaIdRoute = FormulaIdRouteImport.update({
+  id: '/formula/$id',
+  path: '/formula/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ai-assistant': typeof AiAssistantRoute
+  '/bookmarks': typeof BookmarksRoute
+  '/history': typeof HistoryRoute
+  '/library': typeof LibraryRoute
+  '/practice': typeof PracticeRoute
+  '/scientific-calculator': typeof ScientificCalculatorRoute
+  '/subjects': typeof SubjectsRoute
+  '/unit-converter': typeof UnitConverterRoute
+  '/formula/$id': typeof FormulaIdRoute
+  '/subject/$slug': typeof SubjectSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ai-assistant': typeof AiAssistantRoute
+  '/bookmarks': typeof BookmarksRoute
+  '/history': typeof HistoryRoute
+  '/library': typeof LibraryRoute
+  '/practice': typeof PracticeRoute
+  '/scientific-calculator': typeof ScientificCalculatorRoute
+  '/subjects': typeof SubjectsRoute
+  '/unit-converter': typeof UnitConverterRoute
+  '/formula/$id': typeof FormulaIdRoute
+  '/subject/$slug': typeof SubjectSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ai-assistant': typeof AiAssistantRoute
+  '/bookmarks': typeof BookmarksRoute
+  '/history': typeof HistoryRoute
+  '/library': typeof LibraryRoute
+  '/practice': typeof PracticeRoute
+  '/scientific-calculator': typeof ScientificCalculatorRoute
+  '/subjects': typeof SubjectsRoute
+  '/unit-converter': typeof UnitConverterRoute
+  '/formula/$id': typeof FormulaIdRoute
+  '/subject/$slug': typeof SubjectSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/ai-assistant'
+    | '/bookmarks'
+    | '/history'
+    | '/library'
+    | '/practice'
+    | '/scientific-calculator'
+    | '/subjects'
+    | '/unit-converter'
+    | '/formula/$id'
+    | '/subject/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/ai-assistant'
+    | '/bookmarks'
+    | '/history'
+    | '/library'
+    | '/practice'
+    | '/scientific-calculator'
+    | '/subjects'
+    | '/unit-converter'
+    | '/formula/$id'
+    | '/subject/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/ai-assistant'
+    | '/bookmarks'
+    | '/history'
+    | '/library'
+    | '/practice'
+    | '/scientific-calculator'
+    | '/subjects'
+    | '/unit-converter'
+    | '/formula/$id'
+    | '/subject/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AiAssistantRoute: typeof AiAssistantRoute
+  BookmarksRoute: typeof BookmarksRoute
+  HistoryRoute: typeof HistoryRoute
+  LibraryRoute: typeof LibraryRoute
+  PracticeRoute: typeof PracticeRoute
+  ScientificCalculatorRoute: typeof ScientificCalculatorRoute
+  SubjectsRoute: typeof SubjectsRoute
+  UnitConverterRoute: typeof UnitConverterRoute
+  FormulaIdRoute: typeof FormulaIdRoute
+  SubjectSlugRoute: typeof SubjectSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/unit-converter': {
+      id: '/unit-converter'
+      path: '/unit-converter'
+      fullPath: '/unit-converter'
+      preLoaderRoute: typeof UnitConverterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/subjects': {
+      id: '/subjects'
+      path: '/subjects'
+      fullPath: '/subjects'
+      preLoaderRoute: typeof SubjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scientific-calculator': {
+      id: '/scientific-calculator'
+      path: '/scientific-calculator'
+      fullPath: '/scientific-calculator'
+      preLoaderRoute: typeof ScientificCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/practice': {
+      id: '/practice'
+      path: '/practice'
+      fullPath: '/practice'
+      preLoaderRoute: typeof PracticeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library': {
+      id: '/library'
+      path: '/library'
+      fullPath: '/library'
+      preLoaderRoute: typeof LibraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bookmarks': {
+      id: '/bookmarks'
+      path: '/bookmarks'
+      fullPath: '/bookmarks'
+      preLoaderRoute: typeof BookmarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-assistant': {
+      id: '/ai-assistant'
+      path: '/ai-assistant'
+      fullPath: '/ai-assistant'
+      preLoaderRoute: typeof AiAssistantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +258,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/subject/$slug': {
+      id: '/subject/$slug'
+      path: '/subject/$slug'
+      fullPath: '/subject/$slug'
+      preLoaderRoute: typeof SubjectSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/formula/$id': {
+      id: '/formula/$id'
+      path: '/formula/$id'
+      fullPath: '/formula/$id'
+      preLoaderRoute: typeof FormulaIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AiAssistantRoute: AiAssistantRoute,
+  BookmarksRoute: BookmarksRoute,
+  HistoryRoute: HistoryRoute,
+  LibraryRoute: LibraryRoute,
+  PracticeRoute: PracticeRoute,
+  ScientificCalculatorRoute: ScientificCalculatorRoute,
+  SubjectsRoute: SubjectsRoute,
+  UnitConverterRoute: UnitConverterRoute,
+  FormulaIdRoute: FormulaIdRoute,
+  SubjectSlugRoute: SubjectSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
