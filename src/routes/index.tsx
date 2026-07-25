@@ -14,7 +14,7 @@ export const Route = createFileRoute("/")({
       { title: "Formula Lab — Engineering Formulas Made Interactive" },
       { name: "description", content: "Learn, calculate and practise 150+ engineering formulas with an AI tutor. Physics, Math, Chemistry, BEEE and more." },
       { property: "og:title", content: "Formula Lab — Engineering Formulas Made Interactive" },
-      { property: "og:description", content: "Learn, calculate and practise engineering formulas with an AI tutor." },
+      { property: "og:description", content: "Learn, calculate and practise 150+ engineering formulas with an AI tutor. Physics, Math, Chemistry, BEEE and more." },
     ],
   }),
   component: Home,
