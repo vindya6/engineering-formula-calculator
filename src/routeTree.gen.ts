@@ -15,6 +15,7 @@ import { Route as ScientificCalculatorRouteImport } from './routes/scientific-ca
 import { Route as PracticeRouteImport } from './routes/practice'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as HistoryRouteImport } from './routes/history'
+import { Route as CollaborateRouteImport } from './routes/collaborate'
 import { Route as BookmarksRouteImport } from './routes/bookmarks'
 import { Route as AiAssistantRouteImport } from './routes/ai-assistant'
 import { Route as AboutRouteImport } from './routes/about'
@@ -50,6 +51,11 @@ const LibraryRoute = LibraryRouteImport.update({
 const HistoryRoute = HistoryRouteImport.update({
   id: '/history',
   path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollaborateRoute = CollaborateRouteImport.update({
+  id: '/collaborate',
+  path: '/collaborate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BookmarksRoute = BookmarksRouteImport.update({
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/ai-assistant': typeof AiAssistantRoute
   '/bookmarks': typeof BookmarksRoute
+  '/collaborate': typeof CollaborateRoute
   '/history': typeof HistoryRoute
   '/library': typeof LibraryRoute
   '/practice': typeof PracticeRoute
@@ -102,6 +109,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/ai-assistant': typeof AiAssistantRoute
   '/bookmarks': typeof BookmarksRoute
+  '/collaborate': typeof CollaborateRoute
   '/history': typeof HistoryRoute
   '/library': typeof LibraryRoute
   '/practice': typeof PracticeRoute
@@ -117,6 +125,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/ai-assistant': typeof AiAssistantRoute
   '/bookmarks': typeof BookmarksRoute
+  '/collaborate': typeof CollaborateRoute
   '/history': typeof HistoryRoute
   '/library': typeof LibraryRoute
   '/practice': typeof PracticeRoute
@@ -133,6 +142,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ai-assistant'
     | '/bookmarks'
+    | '/collaborate'
     | '/history'
     | '/library'
     | '/practice'
@@ -147,6 +157,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ai-assistant'
     | '/bookmarks'
+    | '/collaborate'
     | '/history'
     | '/library'
     | '/practice'
@@ -161,6 +172,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ai-assistant'
     | '/bookmarks'
+    | '/collaborate'
     | '/history'
     | '/library'
     | '/practice'
@@ -176,6 +188,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AiAssistantRoute: typeof AiAssistantRoute
   BookmarksRoute: typeof BookmarksRoute
+  CollaborateRoute: typeof CollaborateRoute
   HistoryRoute: typeof HistoryRoute
   LibraryRoute: typeof LibraryRoute
   PracticeRoute: typeof PracticeRoute
@@ -230,6 +243,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HistoryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/collaborate': {
+      id: '/collaborate'
+      path: '/collaborate'
+      fullPath: '/collaborate'
+      preLoaderRoute: typeof CollaborateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/bookmarks': {
       id: '/bookmarks'
       path: '/bookmarks'
@@ -280,6 +300,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AiAssistantRoute: AiAssistantRoute,
   BookmarksRoute: BookmarksRoute,
+  CollaborateRoute: CollaborateRoute,
   HistoryRoute: HistoryRoute,
   LibraryRoute: LibraryRoute,
   PracticeRoute: PracticeRoute,
@@ -292,13 +313,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

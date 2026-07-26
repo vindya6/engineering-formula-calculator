@@ -11,6 +11,7 @@ const LINKS = [
   { to: "/practice", label: "Practice" },
   { to: "/unit-converter", label: "Units" },
   { to: "/scientific-calculator", label: "Calculator" },
+  { to: "/collaborate", label: "Collaborate" },
   { to: "/bookmarks", label: "Bookmarks" },
   { to: "/history", label: "History" },
   { to: "/about", label: "About" },
